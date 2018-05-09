@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from soundoff.models import User, Playlist
+from login.models import User, Playlist
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from soundoff.models import User, Playlist
-from soundoff.serializers import UserSerializer, PlaylistSerializer
+from login.models import User, Playlist
+from login.serializers import UserSerializer, PlaylistSerializer
 from rest_framework import generics
 
-def login(request):
+def homepage(request):
     return HttpResponse("Placeholder to be updated!!!!!")
