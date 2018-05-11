@@ -4,7 +4,7 @@ from login.serializers import UserSerializer, PlaylistSerializer
 from rest_framework import generics
 
 def homepage(request):
-    return HttpResponse("Placeholder to be updated!!!!!")
+    return render(request, 'login/index.html')
 
 def userpage(request, username):
     current_user  = get_object_or_404(User, username=username)

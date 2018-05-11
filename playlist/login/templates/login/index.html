@@ -1,0 +1,14 @@
+{% load render_bundle from webpack_loader %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sound Genie</title>
+</head>
+<body>
+    <div id="app"></div>
+    {% render_bundle 'main' %}
+</body>
+</html>
