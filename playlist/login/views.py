@@ -1,6 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from login.models import User, Playlist
+from django.shortcuts import render, get_list_or_404, get_object_or_404, HttpResponse
+from login.models import User, Playlist, Song
 from login.serializers import UserSerializer, PlaylistSerializer
 from rest_framework import generics
 
@@ -8,14 +7,14 @@ def homepage(request):
     return HttpResponse("Placeholder to be updated!!!!!")
 
 def userpage(request, username):
-    playlists = Playlist.objects.filter(user=username)
-    innerHTML = ''
+    current_user  = get_object_or_404(User, username=username)
+    playlists = get_list_or_404(Playlist, user_id=current_user.id)
 
-    for playlist in playlists:
-        url = '/username=' + str(username) + '/' + str(playlist.pk)
-        innerHTML += '<a href="' + url + '">' + playlist.playlist_name + '</a><br>'
-
-    return HttpResponse(innerHTML)
+    return render(request, 'login/list.html', {'playlists': playlists, 'username': username})
 
 def playlist(request, username, playlist):
-    return HttpResponse("Songs will go here")
+    current_user  = get_object_or_404(User, username=username)
+    user_playlist = get_object_or_404(Playlist, user_id=current_user.id, pk=playlist)
+    songs = Song.objects.filter(pk=playlist)
+
+    return render(request, 'login/item.html', {'songs': songs, 'user_playlist': user_playlist})

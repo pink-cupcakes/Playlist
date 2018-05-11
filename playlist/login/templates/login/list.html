@@ -1,0 +1,12 @@
+{% if playlists %}
+  <h1>Hello, {{ username }}</h1>
+  <ul>
+    {% for playlist in playlists %}
+    <li><a href='{% url 'login:playlist' username playlist.pk %}'>{{ playlist.playlist_name }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% else %}
+  <h3>You don't have any playlists yet :(</h3>
+
+{% endif %}

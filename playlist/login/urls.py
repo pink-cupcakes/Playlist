@@ -2,6 +2,8 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'login'
+
 urlpatterns = [
     # /
     url(r'^$', views.homepage, name='homepage'),
@@ -10,5 +12,5 @@ urlpatterns = [
     url(r'^username=(?P<username>[a-z]+)/$', views.userpage, name='userpage'),
 
     # /andy/1
-    url(r'^username=(?P<username>[a-z]+)/(?P<playlist>[0-9]+)/$', views.playlist, name='playlist'),
+    url(r'^username=(?P<username>[a-z]+)/(?P<playlist>[0-9]+)/$', views.playlist, name='playlist')
 ]
